@@ -1,0 +1,48 @@
+<section>
+    <div class="container">
+        <h1 class="my-3 text-main">Login Form</h1>
+
+        <form [formGroup]="LoginForm" (ngSubmit)="LoginSubmit(LoginForm)">
+            <div class=" row ">
+                <div class="col-md-8 m-auto bg-light shadow p-5 my-5 ">
+                    <div class="row ">
+
+
+                        <div class="col-md-12 my-2 ">
+                            <label class="fw-bold " for="email ">email</label>
+                            <input formControlName="email" type="email" id="email " class="form-control ">
+                            <div *ngIf="LoginForm.get('email')?.errors && LoginForm.get('email')?.touched">
+                                <p class="text-danger" *ngIf="LoginForm.get('email')?.getError('required')"> This input Required</p>
+                                <p class="text-danger" *ngIf="LoginForm.get('email')?.getError('email')"> enter valid Email</p>
+
+                            </div>
+                        </div>
+                        <div class="col-md-12 my-2 ">
+                            <label class="fw-bold " for="phone ">Password</label>
+                            <input type="password" formControlName="password" id="Password " class="form-control ">
+                            <div *ngIf="LoginForm.get('password')?.errors && LoginForm.get('password')?.touched">
+                                <p class="text-danger" *ngIf="LoginForm.get('password')?.getError('required')"> This input Required</p>
+                                <p class="text-danger" *ngIf="LoginForm.get('password')?.getError('pattern')"> enter vaid password</p>
+
+                            </div>
+                        </div>
+
+                        <div class="my-2 ">
+                            <p class="text-danger">{{error}}</p>
+                            <button class="btn bg-main text-light float-end " type="submit"> Login
+                              <span *ngIf="Isloding">
+                                <i class="fa-solid fa-spinner fa-spin  "></i>
+                              </span>
+                            </button>
+                            <a class="text-main" routerLink="/forgetPassword">ResetPassword...</a>
+                        </div>
+                        <div>
+                            <span class="text-muted">I didn't have acount? <a routerLink="/signup" class="text-main">Register Now</a></span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </div>
+</section>

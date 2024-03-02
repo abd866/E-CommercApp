@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="row my-4">
+        <div class="col-md-3">
+            <img [src]="productdetial?.imageCover" class="w-100 " [alt]="productdetial?.title" />
+        </div>
+        <div class="col-md-9">
+            <div class="layer h-100 d-flex flex-column justify-content-evenly">
+                <div>
+                    <h2>{{productdetial?.title}}</h2>
+                    <p class="text-muted">{{productdetial?.description}}</p>
+                </div>
+                <div>
+                    <p class="text-main">{{productdetial?.category?.name}}</p>
+                    <div class="d-flex justify-content-between ">
+                        <p>{{productdetial?.price}}</p>
+                        <p>{{productdetial?.ratingsQuantity}}
+                            <i class="fa-solid fa-star rating-color "></i>
+                        </p>
+
+
+                    </div>
+                    <button (click)="addToCart(productdetial?._id)" class="btn bg-main w-100 text-light ">addToCard</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

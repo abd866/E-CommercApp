@@ -1,0 +1,34 @@
+<div *ngIf="!isloading;else loading" class="container">
+    <div class="row my-5">
+        <h3 class="fw-bold"> Shooping Cart</h3>
+        <div class="text-end">
+            <button routerLink="/payment" class="btn bg-main text-light ">online Payment</button>
+        </div>
+        <div class="col-md-10 my-5 m-auto bg-light shadow p-5">
+            <h4 class="py-3"><span class="text-main fw-bold">Total Price </span>{{cartList?.totalCartPrice}}</h4>
+            <div *ngFor="let item of cartList?.products" class="row ">
+                <div class="col-md-2">
+                    <img [src]="item.product.imageCover" alt="imageCover" class="w-100">
+                </div>
+                <div class="col-md-10 d-flex justify-content-between align-items-center">
+                    <div>
+                        <p>{{item.product.title}}</p>
+                        <p>{{item.price}}</p>
+                        <button (click)="dleteCartItem(item.product._id)" class="btn btn-outline-danger"> <i class="fa-regular fa-trash-can"> dlete</i></button>
+                    </div>
+                    <div>
+                        <button (click)="updateCartItem(item.count+1,item.product._id)" class="btn btn-outline-success"> +</button>
+                        <span class="mx-2">{{item.count}}</span>
+                        <button (click)="updateCartItem(item.count-1,item.product._id)" class=" btn btn-outline-success ">-</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #loading>
+    <div class="vh-100 d-flex justify-content-center align-items-center text-main ">
+        <i class="fa-solid fa-spinner fa-spin fa-5x "></i>
+    </div>
+
+</ng-template>

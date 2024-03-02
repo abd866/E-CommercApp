@@ -1,0 +1,74 @@
+<section>
+    <div class="container">
+        <h1 class="my-3 text-main">Register Form</h1>
+        <form [formGroup]="regestraionForm" (ngSubmit)="rgestrationSubmit(regestraionForm)">
+            <div class=" row ">
+                <div class="col-md-8 m-auto bg-light shadow p-5 my-5 ">
+                    <div class="row ">
+
+                        <div class="col-md-12 my-2 ">
+                            <label class="fw-bold " for="Name ">Name</label>
+                            <input formControlName="name" type="text " id="Name " class="form-control ">
+                            <div *ngIf="regestraionForm.get('name')?.errors && regestraionForm.get('name')?.touched">
+                                <p class="text-danger" *ngIf="regestraionForm.get('name')?.getError('required')"> This input Required</p>
+                                <p class="text-danger" *ngIf="regestraionForm.get('name')?.getError('minlength')"> minlength 3</p>
+                                <p class="text-danger" *ngIf="regestraionForm.get('name')?.getError('maxlength')"> maxlength 15</p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 my-2 ">
+                            <label class="fw-bold " for="email ">email</label>
+                            <input formControlName="email" type="email" id="email " class="form-control ">
+                            <div *ngIf="regestraionForm.get('email')?.errors && regestraionForm.get('email')?.touched">
+                                <p class="text-danger" *ngIf="regestraionForm.get('email')?.getError('required')"> This input Required</p>
+                                <p class="text-danger" *ngIf="regestraionForm.get('email')?.getError('email')"> enter valid Email</p>
+
+                            </div>
+                        </div>
+                        <div class="col-md-12 my-2 ">
+                            <label class="fw-bold " for="phone ">Password</label>
+                            <input type="password" formControlName="password" id="Password " class="form-control ">
+                            <div *ngIf="regestraionForm.get('password')?.errors && regestraionForm.get('password')?.touched">
+                                <p class="text-danger" *ngIf="regestraionForm.get('password')?.getError('required')"> This input Required</p>
+                                <p class="text-danger" *ngIf="regestraionForm.get('password')?.getError('pattern')"> enter vaid password</p>
+
+                            </div>
+                        </div>
+                        <div class="col-md-12 my-2 ">
+                            <label class="fw-bold " for="RePassword">RePassword</label>
+                            <input type="password" formControlName="rePassword" id="RePassword" class="form-control ">
+                            <div *ngIf="regestraionForm.get('rePassword')?.errors && regestraionForm.get('rePassword')?.touched">
+                                <p class="text-danger" *ngIf="regestraionForm.get('rePassword')?.getError('required')"> This input Required</p>
+                                <p class="text-danger" *ngIf="regestraionForm.get('rePassword')?.getError('mishmatch')"> rePassword didn't Match password</p>
+
+                            </div>
+                        </div>
+                        <div class="col-md-12 my-2 ">
+                            <label class="fw-bold " for="phone">Phone</label>
+                            <input formControlName="phone" type="tel " id="phone" class="form-control ">
+                            <div *ngIf="regestraionForm.get('phone')?.errors && regestraionForm.get('phone')?.touched">
+                                <p class="text-danger" *ngIf="regestraionForm.get('phone')?.getError('required')"> This input Required</p>
+                                <p class="text-danger" *ngIf="regestraionForm.get('phone')?.getError('pattern')"> enter valid pohone</p>
+
+                            </div>
+                        </div>
+                        <div class="my-2 ">
+
+                            <p class="text-danger">{{error}}</p>
+                            <button class="btn bg-main text-light float-end " type="submit">Register
+                              <span *ngIf="Isloding">
+                                <i class="fa-solid fa-spinner fa-spin  "></i>
+                              </span>
+                            </button>
+
+                        </div>
+                        <div>
+                            <span class="text-muted">already have acount? <a routerLink="/signin" class="text-main">Login</a></span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
